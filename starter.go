@@ -87,7 +87,7 @@ func SetDatasource(datasourceList map[string]DbStruct, data map[interface{}]inte
 	// 连接必要属性
 	//log.Println("INFO 正在获取数据库连接参数..")
 	host := GetStringMustOption(data, "host")
-	port := GetIntMustOption(data, "port")
+	port := strconv.Itoa(GetIntMustOption(data, "port"))
 	user := GetStringMustOption(data, "user")
 	password := GetStringMustOption(data, "password")
 	database := GetStringMustOption(data, "database")
@@ -110,7 +110,7 @@ func SetDatasource(datasourceList map[string]DbStruct, data map[interface{}]inte
 	// var vds = "%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=true&loc=Local"
 	var vds = "%s:%s@tcp(%s:%s)/%s?%s"
 	// 根据env获取host 根据env获取host
-	var dataSource = fmt.Sprintf(vds, user, password, host, strconv.Itoa(port), database, url)
+	var dataSource = fmt.Sprintf(vds, user, password, host, port, database, url)
 	//
 	var err error
 	//

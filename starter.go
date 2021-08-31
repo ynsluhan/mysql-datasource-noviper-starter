@@ -92,7 +92,6 @@ func SetDatasource(datasourceList map[string]DbStruct, data map[interface{}]inte
 	password := GetStringMustOption(data, "password")
 	database := GetStringMustOption(data, "database")
 	url := GetStringMustOption(data, "url")
-	log.Println(host, port, user, password, database, url)
 	// 选择性数据
 	// 连接最大空闲数量
 	interfaceMaxIdle := GetIntOption(data, "max-idle")
@@ -105,7 +104,6 @@ func SetDatasource(datasourceList map[string]DbStruct, data map[interface{}]inte
 	// 是否初始化gorm
 	loadGorm := GetBoolOption(data, "load-gorm")
 	//
-	log.Println(interfaceIdleTimeout, interfaceMaxIdle, interfacePoolSize, interfaceMaxLifetime, loadGorm)
 	//// db
 	var db *sqlx.DB
 	// 数据源url
